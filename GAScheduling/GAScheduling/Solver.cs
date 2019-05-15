@@ -221,7 +221,7 @@ namespace GAScheduling
                 breakpoints.Add(sum);
             }
 
-            for (int i = 1; i < Config.PopulationSize; ++i)
+            for (int i = 0; i < Config.PopulationSize; ++i)
             {
                 Func<int> select = () =>
                 {
