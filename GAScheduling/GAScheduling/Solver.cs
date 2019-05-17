@@ -280,6 +280,9 @@ namespace GAScheduling
             var mutationRate = Config.MutationRate;
             var maxFitness = (new Evaluator(pop.Individuals[0])).Max();
 
+            //var sta = new StreamWriter("s.txt");
+            //sta.WriteLine("0," + pop.AverateFitness + "," + pop.MaxFitness);
+
             for (int i=1; i<Config.Iterations; ++i)
             {
                 RandomEngine.NewSeed();
@@ -289,11 +292,20 @@ namespace GAScheduling
                 pop = new Population(pop);
                 Console.WriteLine(pop);
 
+                //if (i % 25 == 0)
+                //    sta.WriteLine(i + "," + pop.AverateFitness + "," + pop.MaxFitness);
+
                 if (Math.Abs(pop.MaxFitness - maxFitness) < 0.001)
                 {
                     break;
                 }
             }
+
+            //sta.WriteLine(pop.AverateFitness + "," + pop.MaxFitness);
+
+            //sta.Flush();
+            //sta.Close();
+            
 
             foreach (var individual in pop.Individuals)
             {
